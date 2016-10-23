@@ -36,3 +36,4 @@
 
 data/*
 !data/.empty_file
+*.tbl
