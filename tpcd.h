@@ -33,6 +33,19 @@
 /*
  * database portability defines
  */
+
+//8200 add mysql settings
+
+#ifdef MYSQL
+#define GEN_QUERY_PLAN ""
+#define START_TRAN "START TRANSACTION"
+#define END_TRAN "COMMIT"
+#define SET_OUTPUT ""
+#define SET_ROWCOUNT "limit %d;\n"
+#define SET_DBASE "use %s;\n"
+#endif
+
+
 #ifdef DB2
 #define GEN_QUERY_PLAN  "SET CURRENT EXPLAIN SNAPSHOT ON;"
 #define START_TRAN      ""

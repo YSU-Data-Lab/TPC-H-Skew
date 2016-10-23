@@ -31,3 +31,8 @@
 # Debug files
 *.dSYM/
 *.su
+
+# fyu
+
+data/*
+!data/.empty_file

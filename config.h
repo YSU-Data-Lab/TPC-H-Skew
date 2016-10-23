@@ -77,6 +77,10 @@
 #define STDLIB_HAS_GETOPT
 #endif /* SUN */
 
+#ifdef CENTOS
+#define STDLIB_HAS_GETOPT
+#endif /* CentOS */
+
 #ifdef SGI
 #define STDLIB_HAS_GETOPT
 #define SUPPORT_64BITS

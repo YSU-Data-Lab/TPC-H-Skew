@@ -6,14 +6,12 @@
 ## CHANGE NAME OF ANSI COMPILER HERE
 ################
 CC      = gcc
-# use gcc-5.4 compiled from gnu source code on centos 7
-#CC      = x86_64-unknown-linux-gnu-gcc
 # Current values for DATABASE are: INFORMIX, DB2, TDAT (Teradata),
-#                                  SQLSERVER, SYBASE
+#                                  SQLSERVER, SYBASE, MYSQL
 # Current values for PLATFORM are: ATT, DOS, HP, IBM, ICL, MVS,
-#                                  SGI, U2200, VMS, WIN32
-DATABASE= SQLSERVER
-PLATFORM= SUN
+#                                  SGI, U2200, VMS, WIN32, CENTOS
+DATABASE= MYSQL
+PLATFORM= CENTOS
 WORKLOAD = TPCH
 #
 
