@@ -14,7 +14,16 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
+
+
+
+
 #include "config.h"
+////8200 moved some header file up front
+//#include "dss.h"
+//#include "dsstypes.h"
+//#include "bcd2.h"
+////8200 -------
 #include <stdlib.h>
 #if (defined(_POSIX_)||!defined(WIN32))		/* Change for Windows NT */
 #include <unistd.h>
@@ -56,6 +65,7 @@
 #pragma warning(default:4214)
 #endif
 
+//8200
 #include "dss.h"
 #include "dsstypes.h"
 #include "bcd2.h"
