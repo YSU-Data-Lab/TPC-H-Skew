@@ -37,3 +37,6 @@
 data/*
 !data/.empty_file
 *.tbl
+dbgen
+qgen
+*.swp # vim swp file
