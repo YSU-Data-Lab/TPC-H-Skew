@@ -4,3 +4,16 @@ TPC-H with skew factor (Zipf distribution) enabled. Use `dbgen` with `-z` option
 
 The original is the linux version on github. Multiple makefiles have been prepared for multiple distributions including Mac OS.
 
+
+## CentOS compile
+
+    make -f makefile_centos
+
+
+## MacOS compile
+
+    make -f makefile_MacSolaris
+
+
+
+
