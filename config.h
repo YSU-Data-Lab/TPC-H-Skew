@@ -81,6 +81,13 @@
 #define STDLIB_HAS_GETOPT
 #endif /* CentOS */
 
+//fyu: 20190916
+//define for mac osx
+#ifdef MACOSX
+#define STDLIB_HAS_GETOPT
+#define _POSIX_SOURCE
+#endif /* MACOSX */
+
 #ifdef SGI
 #define STDLIB_HAS_GETOPT
 #define SUPPORT_64BITS

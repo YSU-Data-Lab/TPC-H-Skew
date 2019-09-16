@@ -1,4 +1,4 @@
--- using 2694884290 as a seed to the RNG
+-- using 1427350296 as a seed to the RNG
 
 
 select
@@ -15,7 +15,7 @@ select
 from
 	lineitem
 where
-	l_shipdate <= date '1998-12-01' - interval '83' day (3)
+	l_shipdate <= date '1998-12-01' - interval '85' day (3)
 group by
 	l_returnflag,
 	l_linestatus
@@ -43,8 +43,8 @@ from
 where
 	p_partkey = ps_partkey
 	and s_suppkey = ps_suppkey
-	and p_size = 20
-	and p_type like '%COPPER'
+	and p_size = 21
+	and p_type like '%NICKEL'
 	and s_nationkey = n_nationkey
 	and n_regionkey = r_regionkey
 	and r_name = 'ASIA'
@@ -81,11 +81,11 @@ from
 	orders,
 	lineitem
 where
-	c_mktsegment = 'BUILDING'
+	c_mktsegment = 'FURNITURE'
 	and c_custkey = o_custkey
 	and l_orderkey = o_orderkey
-	and o_orderdate < date '1995-03-06'
-	and l_shipdate > date '1995-03-06'
+	and o_orderdate < date '1995-03-28'
+	and l_shipdate > date '1995-03-28'
 group by
 	l_orderkey,
 	o_orderdate,
@@ -102,8 +102,8 @@ select
 from
 	orders
 where
-	o_orderdate >= date '1994-12-01'
-	and o_orderdate < date '1994-12-01' + interval '3' month
+	o_orderdate >= date '1995-02-01'
+	and o_orderdate < date '1995-02-01' + interval '3' month
 	and exists (
 		select
 			*
@@ -137,9 +137,9 @@ where
 	and c_nationkey = s_nationkey
 	and s_nationkey = n_nationkey
 	and n_regionkey = r_regionkey
-	and r_name = 'AMERICA'
-	and o_orderdate >= date '1993-01-01'
-	and o_orderdate < date '1993-01-01' + interval '1' year
+	and r_name = 'ASIA'
+	and o_orderdate >= date '1997-01-01'
+	and o_orderdate < date '1997-01-01' + interval '1' year
 group by
 	n_name
 order by
@@ -152,9 +152,9 @@ select
 from
 	lineitem
 where
-	l_shipdate >= date '1994-01-01'
-	and l_shipdate < date '1994-01-01' + interval '1' year
-	and l_discount between 0.03 - 0.01 and 0.03 + 0.01
+	l_shipdate >= date '1995-01-01'
+	and l_shipdate < date '1995-01-01' + interval '1' year
+	and l_discount between 0.09 - 0.01 and 0.09 + 0.01
 	and l_quantity < 25;
 limit -1;
 
@@ -185,8 +185,8 @@ from
 			and s_nationkey = n1.n_nationkey
 			and c_nationkey = n2.n_nationkey
 			and (
-				(n1.n_name = 'INDONESIA' and n2.n_name = 'EGYPT')
-				or (n1.n_name = 'EGYPT' and n2.n_name = 'INDONESIA')
+				(n1.n_name = 'IRAN' and n2.n_name = 'VIETNAM')
+				or (n1.n_name = 'VIETNAM' and n2.n_name = 'IRAN')
 			)
 			and l_shipdate between date '1995-01-01' and date '1996-12-31'
 	) as shipping
@@ -204,7 +204,7 @@ limit -1;
 select
 	o_year,
 	sum(case
-		when nation = 'INDONESIA' then volume
+		when nation = 'IRAN' then volume
 		else 0
 	end) / sum(volume) as mkt_share
 from
@@ -229,10 +229,10 @@ from
 			and o_custkey = c_custkey
 			and c_nationkey = n1.n_nationkey
 			and n1.n_regionkey = r_regionkey
-			and r_name = 'ASIA'
+			and r_name = 'MIDDLE EAST'
 			and s_nationkey = n2.n_nationkey
 			and o_orderdate between date '1995-01-01' and date '1996-12-31'
-			and p_type = 'STANDARD BRUSHED COPPER'
+			and p_type = 'PROMO BURNISHED NICKEL'
 	) as all_nations
 group by
 	o_year
@@ -265,7 +265,7 @@ from
 			and p_partkey = l_partkey
 			and o_orderkey = l_orderkey
 			and s_nationkey = n_nationkey
-			and p_name like '%honeydew%'
+			and p_name like '%ivory%'
 	) as profit
 group by
 	nation,
@@ -293,8 +293,8 @@ from
 where
 	c_custkey = o_custkey
 	and l_orderkey = o_orderkey
-	and o_orderdate >= date '1993-11-01'
-	and o_orderdate < date '1993-11-01' + interval '3' month
+	and o_orderdate >= date '1993-12-01'
+	and o_orderdate < date '1993-12-01' + interval '3' month
 	and l_returnflag = 'R'
 	and c_nationkey = n_nationkey
 group by
@@ -320,7 +320,7 @@ from
 where
 	ps_suppkey = s_suppkey
 	and s_nationkey = n_nationkey
-	and n_name = 'INDONESIA'
+	and n_name = 'IRAN'
 group by
 	ps_partkey having
 		sum(ps_supplycost * ps_availqty) > (
@@ -333,7 +333,7 @@ group by
 			where
 				ps_suppkey = s_suppkey
 				and s_nationkey = n_nationkey
-				and n_name = 'INDONESIA'
+				and n_name = 'IRAN'
 		)
 order by
 	value desc;
@@ -359,7 +359,7 @@ from
 	lineitem
 where
 	o_orderkey = l_orderkey
-	and l_shipmode in ('RAIL', 'AIR')
+	and l_shipmode in ('RAIL', 'SHIP')
 	and l_commitdate < l_receiptdate
 	and l_shipdate < l_commitdate
 	and l_receiptdate >= date '1995-01-01'
@@ -382,7 +382,7 @@ from
 		from
 			customer left outer join orders on
 				c_custkey = o_custkey
-				and o_comment not like '%Clerk#000000387%%'
+				and o_comment not like '%Clerk#000000418%%'
 		group by
 			c_custkey
 	) as c_orders (c_custkey, c_count)
@@ -405,8 +405,8 @@ from
 	part
 where
 	l_partkey = p_partkey
-	and l_shipdate >= date '1995-01-01'
-	and l_shipdate < date '1995-01-01' + interval '1' month;
+	and l_shipdate >= date '1995-03-01'
+	and l_shipdate < date '1995-03-01' + interval '1' month;
 limit -1;
 
 create view revenue0 (supplier_no, total_revenue) as
@@ -416,8 +416,8 @@ create view revenue0 (supplier_no, total_revenue) as
 	from
 		lineitem
 	where
-		l_shipdate >= date '1994-12-01'
-		and l_shipdate < date '1994-12-01' + interval '3' month
+		l_shipdate >= date '1995-02-01'
+		and l_shipdate < date '1995-02-01' + interval '3' month
 	group by
 		l_suppkey;
 
@@ -456,9 +456,9 @@ from
 	part
 where
 	p_partkey = ps_partkey
-	and p_brand <> 'Brand#12'
-	and p_type not like 'LARGE ANODIZED%'
-	and p_size in (18, 13, 41, 3, 39, 27, 20, 22)
+	and p_brand <> 'Brand#53'
+	and p_type not like 'LARGE BURNISHED%'
+	and p_size in (48, 35, 42, 21, 37, 10, 31, 38)
 	and ps_suppkey not in (
 		select
 			s_suppkey
@@ -486,8 +486,8 @@ from
 	part
 where
 	p_partkey = l_partkey
-	and p_brand = 'Brand#12'
-	and p_container = 'MED PACK'
+	and p_brand = 'Brand#53'
+	and p_container = 'MED CAN'
 	and l_quantity < (
 		select
 			0.2 * avg(l_quantity)

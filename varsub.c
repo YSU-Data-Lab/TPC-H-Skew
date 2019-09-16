@@ -1,8 +1,5 @@
 /* Sccsid:     @(#)varsub.c	9.1.1.25     5/1/96  11:52:23 */
 #include <stdio.h>
-#ifndef _POSIX_SOURCE
-#include <malloc.h>
-#endif /* POSIX_SOURCE */
 #if (defined(_POSIX_)||!defined(WIN32))
 #include <unistd.h>
 #endif /* WIN32 */
@@ -10,6 +7,10 @@
 #include "config.h"
 #include "dss.h"
 #include "tpcd.h"
+//fyu 20190916
+#ifndef _POSIX_SOURCE
+#include <malloc.h>
+#endif /* POSIX_SOURCE */
 #define TYPE_CNT        8
 extern long Seed[];
 extern char **asc_date;

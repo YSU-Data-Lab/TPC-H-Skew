@@ -10,10 +10,14 @@ CC      = gcc
 #                                  SQLSERVER, SYBASE
 # Current values for PLATFORM are: ATT, DOS, HP, IBM, ICL, MVS,
 #                                  SGI, U2200, VMS, WIN32
-DATABASE= SQLSERVER
-PLATFORM= LINUX
+
+DATABASE= MYSQL
+PLATFORM= MACOSX
+WORKLOAD = TPCH
+CFLAGS  = -O -D$(DATABASE) -D$(PLATFORM) -D$(WORKLOAD)
 #
-CFLAGS  = -O -D$(DATABASE) -D$(PLATFORM) -I/usr/include/sys
+#CFLAGS  = -O -D$(DATABASE) -D$(PLATFORM) -I/usr/include/sys -I/usr/include/stdlib.h -I/usr/include/stdio.h
+#CFLAGS  = -O -D$(DATABASE) -D$(PLATFORM) -I/usr/include/sys
 #CFLAGS  = -g -DDBNAME=\"dss\" -D$(MACHINE) -D$(DATABASE) -D$(WORKLOAD) -DRNG_TEST -D_FILE_OFFSET_BITS=64 -I/usr/include/sys
 LDFLAGS = 
 # The OBJ,EXE and LIB macros will need to be changed for compilation under

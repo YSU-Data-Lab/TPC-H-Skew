@@ -34,9 +34,14 @@
 
 # fyu
 
+*.DS_Store
 data/*
 !data/.empty_file
 *.tbl
 dbgen
 qgen
 *.swp # vim swp file
+.idea/
+CMakeLists.txt
+cmake-build-debug/
+tags
