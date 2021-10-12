@@ -13,6 +13,11 @@ The original is the linux version on github. Multiple makefiles have been prepar
 ## MacOS compile
 
     make -f makefile_MacSolaris
+    
+# Generate
+For example to generate a 100MB test data:
+
+`./dbgen -s 0.1`
 
 
 
