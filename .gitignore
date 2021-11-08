@@ -36,8 +36,8 @@
 .idea/
 .vscode
 *.DS_Store
-data/*
-!data/.empty_file
+data*/*
+#!data/.empty_file
 *.tbl
 dbgen
 qgen
