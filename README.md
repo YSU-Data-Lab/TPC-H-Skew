@@ -5,6 +5,7 @@ TPC-H with skew factor (Zipf distribution) enabled. Use `dbgen` with `-z` option
 The original is the linux version on github. Multiple makefiles have been prepared for multiple distributions including Mac OS.
 
 
+
 ## CentOS compile
 
     make -f makefile_centos
@@ -75,6 +76,10 @@ To generate updates for a SF=1 (1GB), use:
 	dbgen -v -O s -s 1
 	dbgen -v -U 1 -s 1
 ```
+
+![tpch join graph](figure/tpc-h_join_graph.png)
+
+
 
 
 
